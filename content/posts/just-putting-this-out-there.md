@@ -11,6 +11,6 @@ description: "Sometimes (all the time), the best way to get something done is to
 
 Sometimes (all the time), the best way to get something done is to just trow it out there and start iterating. This site is just that.
 
-My intent is to start writing about stuff I think about too much, which (currently) is mostly web development, design systems and music. Hopefully I can share things I learn and make as I learn them and make them, and contribute in some way or antoher. 
+My intent is to start writing about stuff I think about too much, which (currently) is mostly web development, design systems and music. Hopefully I can share things I learn and make as I learn them and make them, and contribute in some way or another. 
 
 The site is built with [Gridsome](https://gridsome.org/), on top of their [Gridsome Starter Blog](https://github.com/gridsome/gridsome-starter-blog). As of now, it is pretty much untouched. As I said, it is just a starting point to get up and running.
