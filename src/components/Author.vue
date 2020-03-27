@@ -13,7 +13,7 @@
 
     <p class="author__intro">
       Independent front-end web developer for hire.
-      <br />Musician in
+      <br />Musician in A Swarm of the Sun.
       <br />Photographer and videographer.
     </p>
 
