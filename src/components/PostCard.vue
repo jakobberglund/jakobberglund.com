@@ -44,6 +44,7 @@ export default {
   &__tags {
     z-index: 1;
     position: relative;
+    display: inline-block;
   }
 
   &__link {
@@ -56,6 +57,11 @@ export default {
     overflow: hidden;
     text-indent: -9999px;
     z-index: 0;
+
+    &:focus {
+      outline: 1px solid black;
+      opacity: 1;
+    }
   }
 }
 </style>

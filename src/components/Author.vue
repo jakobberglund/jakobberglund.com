@@ -63,10 +63,10 @@ export default {
     margin-top: -0.5em;
 
     a {
-      margin-right: 0.5em;
+      margin: 0 0.5em 0 0;
 
       .author--center & {
-        margin: 0 0.5em;
+        margin: 0 0.25em;
       }
     }
   }
