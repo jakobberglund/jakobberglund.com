@@ -4,10 +4,6 @@
       <div class="header__left">
         <Logo v-if="showLogo" />
       </div>
-
-      <div class="header__right">
-        <ToggleTheme />
-      </div>
     </header>
 
     <main class="main">

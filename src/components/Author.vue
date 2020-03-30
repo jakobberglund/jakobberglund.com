@@ -1,16 +1,6 @@
 <template>
-  <div class="author">
-    <g-image
-      alt="A picture of me"
-      class="author__image"
-      src="~/assets/images/me.jpg"
-      width="180"
-      height="180"
-      blur="5"
-    />
-
+  <div class="author" :class="cssModifiers">
     <h1 v-if="showTitle" class="author__site-title">{{ $static.metadata.siteName }}</h1>
-
     <p class="author__intro">
       Independent front-end web developer for hire.
       <br />Musician in A Swarm of the Sun.
@@ -37,37 +27,57 @@ query {
 
 <script>
 export default {
-  props: ["showTitle"]
+  props: {
+    showTitle: {
+      type: Boolean,
+      default: false
+    },
+    center: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    cssModifiers() {
+      return {
+        "author--center": this.center
+      };
+    }
+  }
 };
 </script>
 
 <style lang="scss">
 .author {
-  margin: 0 auto;
-  max-width: 500px;
-  text-align: center;
-  padding: calc(var(--space) / 2) 0;
-
-  &__image {
-    border-radius: 100%;
-    width: 90px;
-    height: 90px;
-    margin-bottom: 1em;
-  }
+  padding: calc(var(--space) / 2) var(--space);
 
   &__intro {
     opacity: 0.8;
   }
 
   &__site-title {
-    font-size: 1.5em;
+    font-size: var(--font-size--jumbo);
   }
 
   &__links {
     margin-top: -0.5em;
+
     a {
-      margin: 0 0.5em;
+      margin-right: 0.5em;
+
+      .author--center & {
+        margin: 0 0.5em;
+      }
     }
+  }
+
+  &--center {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 }
 </style>

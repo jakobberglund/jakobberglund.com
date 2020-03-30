@@ -1,32 +1,41 @@
 <template>
   <Layout>
-    <div class="post-title">
-      <h1 class="post-title__text">{{ $page.post.title }}</h1>
+    <g-image
+      alt="Cover image"
+      v-if="$page.post.cover_image"
+      :src="$page.post.cover_image"
+      class="post-image"
+    />
+    <Box>
+      <div class="post-title">
+        <h1 class="post-title__text">{{ $page.post.title }}</h1>
 
-      <PostMeta :post="$page.post" />
-    </div>
-
-    <div class="post content-box">
-      <div class="post__header">
-        <g-image alt="Cover image" v-if="$page.post.cover_image" :src="$page.post.cover_image" />
+        <PostMeta :post="$page.post" />
       </div>
 
-      <div class="post__content" v-html="$page.post.content" />
+      <div class="post">
+        <div class="post__header"></div>
 
-      <div class="post__footer">
-        <PostTags :post="$page.post" />
+        <div class="post__content" v-html="$page.post.content" />
+
+        <div class="post__footer">
+          <PostTags :post="$page.post" />
+        </div>
       </div>
-    </div>
+    </Box>
 
     <div class="post-comments">
       <!-- Add comment widgets here -->
     </div>
 
-    <Author class="post-author" />
+    <Box theme="dark">
+      <Author class="post-author" center />
+    </Box>
   </Layout>
 </template>
 
 <script>
+import Box from "~/components/Box";
 import PostMeta from "~/components/PostMeta";
 import PostTags from "~/components/PostTags";
 import Author from "~/components/Author.vue";
@@ -34,6 +43,7 @@ import Author from "~/components/Author.vue";
 export default {
   components: {
     Author,
+    Box,
     PostMeta,
     PostTags
   },
@@ -65,18 +75,26 @@ query Post ($id: ID!) {
     }
     description
     content
-    cover_image (width: 860, blur: 10)
+    cover_image (height: 700, blur: 10)
   }
 }
 </page-query>
 
 <style lang="scss">
+.post-image {
+  width: 100%;
+}
+
 .post-title {
   padding: calc(var(--space) / 2) 0 calc(var(--space) / 2);
   text-align: center;
 }
 
 .post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   &__header {
     width: calc(100% + var(--space) * 2);
     margin-left: calc(var(--space) * -1);
@@ -99,9 +117,13 @@ query Post ($id: ID!) {
       margin-top: 0;
     }
 
-    p:first-of-type {
-      font-size: 1.2em;
-      color: var(--title-color);
+    p {
+      max-width: 700px;
+
+      &:first-of-type {
+        font-size: 1.2em;
+        color: var(--title-color);
+      }
     }
 
     img {
